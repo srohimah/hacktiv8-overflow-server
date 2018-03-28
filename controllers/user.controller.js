@@ -15,7 +15,7 @@ module.exports ={
                     email:req.body.email,
                     password:req.body.password
                 }).then(newUser=>{
-                    res.status(201).json({
+                    res.send({
                         message : "new user created",
                         newUser
                     })
@@ -28,13 +28,13 @@ module.exports ={
             if(data){
                 comparePassword = hash.compare(req.body.password, data.password)
                 if(comparePassword){
-                    res.status(200).json({
+                    res.send({
                         message : 'logged in',
                         data,
                         token: token.generate({id:data.id, name:data.name})
                     })
                 }else{
-                    res.status(404).json({
+                    res.send({
                         message : 'password is incorect'
                     })
                 }

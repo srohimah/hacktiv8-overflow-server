@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 module.exports ={
   showAllAnswer: function (req, res){
     Answer.find().sort([['updatedAt', 'descending']]).populate('userId').exec().then(data=>{
-      res.status(200).json({
+      res.send({
         message: 'list question',
         data
       })
@@ -18,7 +18,7 @@ module.exports ={
       content : req.body.content,
       userId : decoded.id
     }).then(data=>{
-      res.status(201).json({
+      res.send({
         message : 'question created',
         data
       }).catch(err=>res.send(err))
@@ -26,7 +26,7 @@ module.exports ={
   },
   findOneQuestion: function (req, res){
     Question.find(req.params.id).then(data=>{
-      res.status(200).json({
+      res.send({
         message : 'data'
       })
     })

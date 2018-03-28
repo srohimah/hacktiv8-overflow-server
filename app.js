@@ -14,7 +14,7 @@ var questionRouter = require('./routes/question');
 
 var app = express();
 app.use(cors())
-const url = "mongodb://localhost:27017/overflow"
+const url = "mongodb://srohimah:12345@ds135800.mlab.com:35800/overflow"
 mongoose.connect(url, err=>{
   if(!err){
     console.log('connected to database')
